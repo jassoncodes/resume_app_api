@@ -1,3 +1,4 @@
 .vscode
 certs
 /src/Jasson.Codes.Api/*.txt
+/src/Jasson.Codes.Api/obj
