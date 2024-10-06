@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\jasson.codes.api.props" />
-</Project>

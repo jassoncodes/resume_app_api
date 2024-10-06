@@ -2,3 +2,4 @@
 certs
 /src/Jasson.Codes.Api/*.txt
 /src/Jasson.Codes.Api/obj
+/src/Jasson.Codes.Api/bin
