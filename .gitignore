@@ -3,3 +3,4 @@ certs
 /src/Jasson.Codes.Api/*.txt
 /src/Jasson.Codes.Api/obj
 /src/Jasson.Codes.Api/bin
+/src/Jasson.Codes.Api/README.md
