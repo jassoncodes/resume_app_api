@@ -20,7 +20,7 @@ public class AboutService : IAboutService
 
         if (about is null)
         {
-            return null;
+            return [];
         }
 
         var aboutDTO = new AboutDTO(

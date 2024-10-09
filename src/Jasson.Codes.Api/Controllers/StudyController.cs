@@ -25,9 +25,9 @@ public class StudyController : ControllerBase
     public async Task<ActionResult<IEnumerable<StudyDTO>>> GetStudies()
     {
         var studies = await _studyService.GetStudies();
-        if (studies is null)
+        if (!studies.Any())
         {
-            return NotFound("Not studies were found");
+            return NotFound("No studies information found");
         }
 
         return Ok(studies);

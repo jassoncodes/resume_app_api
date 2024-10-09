@@ -3,14 +3,14 @@
 version: '3.4'
 
 services:
-  jassoncodesapi:
-    image: jassoncodesapi
-    container_name: api_container
+  resumeapp_api:
+    image: resumeapp_api
+    container_name: resumeapp_api_container
     build:
       context: .
       dockerfile: src/Jasson.Codes.Api/Dockerfile
     depends_on:
-      jassoncodesapi.db:
+      resumeapp_db:
         condition: service_started
         restart: true
     ports:
@@ -22,10 +22,10 @@ services:
         - ASPNETCORE_Kestrel__Certificates__Default__Password=JassonCodesApi
         - ASPNETCORE_Kestrel__Certificates__Default__Path=/certs/aspnetapp.pfx
     volumes:
-      - api:/certs:ro
+      - resumeapp_api_vol:/certs:ro
 
-  jassoncodesapi.db:
-    container_name: api_postgres_container
+  resumeapp_db:
+    container_name: resumeapp_postgresdb_container
     image: postgres
     restart: always
     environment:
@@ -33,12 +33,12 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: ResumeAppDB
     volumes:
-      - api_db:/var/lib/postgresql/data
+      - resumeapp_db_vol:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   
-  pgadmin:
-    container_name: pgadmin4_container
+  resumeapp_pgadmin:
+    container_name: resumeapp_pgadmin_container
     image: dpage/pgadmin4
     restart: always
     environment:
@@ -47,17 +47,17 @@ services:
     ports:
       - "5452:80"
     volumes:
-      - api_db_pgdamdmin:/etc/pgadmin4
+      - resumeapp_pgdamdmin_vol:/var/lib/pgadmin
 
 volumes:
-  api:
-    name: jassoncodesapi
+  resumeapp_api_vol:
+    name: resumeapp_api_vol
     driver: local
     driver_opts:
       type: none
       o: bind
       device: ./certs
-  api_db:
-    name: jassoncodesapi_db
-  api_db_pgdamdmin:
-      name: api_db_pgdamdmin
+  resumeapp_db_vol:
+    name: resumeapp_db_vol
+  resumeapp_pgdamdmin_vol:
+      name: resumeapp_pgdamdmin_vol

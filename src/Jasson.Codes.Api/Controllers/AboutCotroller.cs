@@ -26,7 +26,7 @@ public class AboutController : ControllerBase
     {
         var about = await _aboutService.GetAboutInfo();
 
-        if (about is null)
+        if (!about.Any())
         {
             return NotFound("No information found");
         }

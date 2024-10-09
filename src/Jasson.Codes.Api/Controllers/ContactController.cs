@@ -28,9 +28,9 @@ public class ContactController : ControllerBase
     {
         var contactInfoDTOs = await _contactService.GetContactInfoAsync();
 
-        if (contactInfoDTOs is null)
+        if (!contactInfoDTOs.Any())
         {
-            return NotFound("No information found");
+            return NotFound("No contact information found");
         }
 
         return Ok(contactInfoDTOs);

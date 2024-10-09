@@ -29,9 +29,9 @@ public class ExperienceController : ControllerBase
 
         var experiences = await _experienceService.GetExperience();
 
-        if (experiences is null)
+        if (!experiences.Any())
         {
-            return NotFound("Not experience found");
+            return NotFound("No experience information found");
         }
 
         return Ok(experiences);

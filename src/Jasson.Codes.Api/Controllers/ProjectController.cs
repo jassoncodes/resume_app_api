@@ -26,9 +26,9 @@ public class ProjectController : ControllerBase
     {
 
         var projects = await _projectService.GetProjects();
-        if (projects is null)
+        if (!projects.Any())
         {
-            return NotFound("No projects were found");
+            return NotFound("No projects information found");
         }
 
         return Ok(projects);

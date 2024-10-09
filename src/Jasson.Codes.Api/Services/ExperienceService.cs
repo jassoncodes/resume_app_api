@@ -20,7 +20,7 @@ public class ExperienceService : IExperienceService
 
         if (experiences is null)
         {
-            return null;
+            return [];
         }
 
         var experienceDtos = experiences.Select(exp =>

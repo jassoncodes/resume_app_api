@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(
-        "reactClientApp",
+        "reactClientApp-Dev",
         policyBuilder =>
         {
             policyBuilder.WithOrigins("http://localhost:5173");
@@ -38,6 +38,15 @@ builder.Services.AddCors(options =>
             policyBuilder.AllowAnyMethod();
             policyBuilder.AllowCredentials();
         });
+
+    options.AddPolicy("reactClientApp", policyBuilder =>
+    {
+        policyBuilder.WithOrigins("http://localhost:3000");
+        policyBuilder.AllowAnyHeader();
+        policyBuilder.AllowAnyMethod();
+        policyBuilder.AllowCredentials();
+    });
+
 });
 
 builder.Services.AddRouting(options =>
@@ -68,6 +77,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors("reactClientApp-Dev");
 app.UseCors("reactClientApp");
 
 app.Run();

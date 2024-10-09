@@ -21,9 +21,16 @@ public class MeController : ControllerBase
 
         var meInfo = await _meService.GetMeInfo();
 
-        if (meInfo is null)
+        foreach (var item in meInfo)
         {
-            return NotFound("No info was found");
+            if (item.About.Count == 0 &&
+                item.Contact.Count == 0 &&
+                item.Experience.Count == 0 &&
+                item.Projects.Count == 0
+                && item.Study.Count == 0)
+            {
+                return NotFound("No information found");
+            }
         }
 
         return Ok(meInfo);

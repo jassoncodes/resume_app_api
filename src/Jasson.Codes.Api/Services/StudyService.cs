@@ -17,12 +17,12 @@ public class StudyService : IStudyService
     public async Task<IEnumerable<StudyDTO>> GetStudies()
     {
         var studies = await _context.Studies.ToListAsync();
-        if(studies is null)
+        if (studies is null)
         {
-            return null;
+            return [];
         }
         var studiesDTOs = studies.Select(study => study.AsDTO());
-        
+
         return studiesDTOs;
     }
 

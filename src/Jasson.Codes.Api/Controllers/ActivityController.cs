@@ -28,10 +28,14 @@ public class ActivityController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ActivityExperienceDTO>>> GetActivities()
     {
-        var activities = await _context.ExperienceActivies.ToListAsync();
-        var activitiesDtos = activities.Select(act => act.AsDTO());
+        var activities = await _activityService.GetActivities();
 
-        return Ok(activitiesDtos);
+        if (!activities.Any())
+        {
+            return NotFound("No activities found");
+        }
+
+        return Ok(activities);
     }
 
     // GET: api/Activity/7

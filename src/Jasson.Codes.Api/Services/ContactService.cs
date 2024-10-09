@@ -20,7 +20,7 @@ public class ContactService : IContactService
 
         if (contactInfo is null)
         {
-            return null;
+            return [];
         }
 
         var contactInfoDTOs = contactInfo.Select(constactInfo => constactInfo.AsDTO());

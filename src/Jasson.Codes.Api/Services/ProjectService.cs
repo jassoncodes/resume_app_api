@@ -20,7 +20,7 @@ public class ProjectService : IProjectService
         var projects = await _context.Projects.ToListAsync();
         if (projects is null)
         {
-            return null;
+            return [];
         }
 
         var projectsDTOs = projects.Select(p => p.AsDTO());
