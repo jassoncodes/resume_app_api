@@ -1,13 +1,10 @@
 .vscode
-<<<<<<< HEAD
 bin
 obj
 *.txt
 Migrations
-=======
 certs
 /src/Jasson.Codes.Api/*.txt
 /src/Jasson.Codes.Api/obj
 /src/Jasson.Codes.Api/bin
 /src/Jasson.Codes.Api/README.md
->>>>>>> fe4fd75aa7e291a61bbd04c54b45d02fb6e09f76

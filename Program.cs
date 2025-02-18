@@ -7,7 +7,10 @@ using Jasson.Codes.Api.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("AppDbContext") ?? throw new InvalidOperationException("Connection string 'AppDbContext' not found."));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("AppDbContext") ??
+            throw new InvalidOperationException("Connection string 'AppDbContext' not found.")
+    );
 });
 
 
